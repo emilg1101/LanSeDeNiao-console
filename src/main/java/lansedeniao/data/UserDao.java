@@ -1,6 +1,6 @@
-package data;
+package lansedeniao.data;
 
-import data.entity.UserDto;
+import lansedeniao.data.entity.UserDto;
 
 public interface UserDao {
 

@@ -1,6 +1,6 @@
-package domain.entity;
+package lansedeniao.domain.entity;
 
-import data.entity.UserDto;
+import lansedeniao.data.entity.UserDto;
 
 public class User {
 

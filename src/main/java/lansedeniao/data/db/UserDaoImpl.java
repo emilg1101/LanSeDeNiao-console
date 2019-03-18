@@ -1,7 +1,7 @@
-package data.db;
+package lansedeniao.data.db;
 
-import data.UserDao;
-import data.entity.UserDto;
+import lansedeniao.data.UserDao;
+import lansedeniao.data.entity.UserDto;
 
 public class UserDaoImpl implements UserDao {
 

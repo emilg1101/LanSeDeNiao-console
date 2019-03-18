@@ -1,4 +1,4 @@
-package util;
+package lansedeniao.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +15,8 @@ public class DbUtil {
         if (connection != null)
             return connection;
         else {
-            try {
+            try (InputStream inputStream = DbUtil.class.getClassLoader().getResourceAsStream("db.properties")) {
                 Properties prop = new Properties();
-                InputStream inputStream = DbUtil.class.getClassLoader().getResourceAsStream("db.properties");
                 prop.load(inputStream);
                 String driver = prop.getProperty("driver");
                 String url = prop.getProperty("url");

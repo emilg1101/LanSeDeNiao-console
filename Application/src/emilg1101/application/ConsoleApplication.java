@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class ConsoleApplication implements Application {
 
-    public static final String LOGGING_FORMAT = "java.util.logging.SimpleFormatter.format";
+    private static final String LOGGING_FORMAT = "java.lansedeniao.util.logging.SimpleFormatter.format";
 
     private CommandReader commandReader;
 
@@ -26,7 +26,6 @@ public class ConsoleApplication implements Application {
         this.init(this);
         this.start();
         this.commandReader.listen();
-        this.close();
     }
 
     private void initCommands() {
@@ -68,7 +67,7 @@ public class ConsoleApplication implements Application {
         Log.i(TAG, "start()");
     }
 
-    public void addCommand(String command, Command commandListener) {
+    protected void addCommand(String command, Command commandListener) {
         this.commandReader.addCommand(command, commandListener);
     }
 
