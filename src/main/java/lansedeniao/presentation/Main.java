@@ -5,6 +5,8 @@ import emilg1101.application.ConsoleApplication;
 import lansedeniao.presentation.command.HelpCommand;
 import lansedeniao.presentation.command.LoginCommand;
 import lansedeniao.presentation.command.LogoutCommand;
+import lansedeniao.presentation.command.SignUpCommand;
+import lansedeniao.presentation.printer.StartPrinter;
 import lansedeniao.util.DbUtil;
 
 import java.sql.Connection;
@@ -22,5 +24,11 @@ public class Main extends ConsoleApplication {
         addCommand("?", new HelpCommand());
         addCommand("/login <username> <password>", new LoginCommand());
         addCommand("/logout", new LogoutCommand());
+        addCommand("/signup <login> <password> <birthday> <country> <gender>", new SignUpCommand());
+    }
+
+    @Override
+    public void start() {
+        new StartPrinter().print();
     }
 }

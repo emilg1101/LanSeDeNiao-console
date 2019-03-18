@@ -5,6 +5,9 @@ import lansedeniao.data.db.UserDaoImpl;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.repository.UserRepository;
 
+import java.time.Instant;
+import java.util.Date;
+
 public class UserRepositoryImpl implements UserRepository {
 
     private static UserRepository instance = null;
@@ -31,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserByUsername(String username) {
-        return new User(username, "123");
+        return new User(0, username, "123", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
     }
 
     @Override

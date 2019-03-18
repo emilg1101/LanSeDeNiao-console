@@ -2,14 +2,24 @@ package lansedeniao.presentation.model;
 
 import lansedeniao.domain.entity.User;
 
+import java.util.Date;
+
 public class UserModel {
 
-    public String username;
-    public String password;
+    private String username;
+    private String password;
 
-    private UserModel(String username, String password) {
+    UserModel(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public static UserModel mapper(User from) {
