@@ -2,8 +2,7 @@ package lansedeniao.presentation.printer;
 
 public class StartPrinter {
 
-    public void print()
-    {
+    public void print() {
         System.out.println("====================================");
         System.out.println("Please, use this form for log in");
         System.out.println("/login <login> <password>");

@@ -24,7 +24,7 @@ public class Main extends ConsoleApplication {
         addCommand("?", new HelpCommand());
         addCommand("/login <username> <password>", new LoginCommand());
         addCommand("/logout", new LogoutCommand());
-        addCommand("/signup <login> <password> <birthday> <country> <gender>", new SignUpCommand());
+        addCommand("/signup <name> <email> <username> <password>", new SignUpCommand());
     }
 
     @Override

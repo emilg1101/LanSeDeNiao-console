@@ -1,8 +1,5 @@
 package lansedeniao.domain.entity;
 
-import lansedeniao.data.entity.UserDto;
-
-import java.time.Instant;
 import java.util.Date;
 
 public class User {
@@ -75,9 +72,5 @@ public class User {
 
     public int getPostsCount() {
         return postsCount;
-    }
-
-    public static User mapper(UserDto from) {
-        return new User(0, "username", "password", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
     }
 }

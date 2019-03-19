@@ -2,6 +2,7 @@ package lansedeniao.data.repository;
 
 import lansedeniao.data.UserDao;
 import lansedeniao.data.db.UserDaoImpl;
+import lansedeniao.data.mapper.UserMapper;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.repository.UserRepository;
 
@@ -29,12 +30,17 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserById(long id) {
-        return User.mapper(userDao.getUserById(id));
+        return new UserMapper().map(userDao.getUserById(id));
     }
 
     @Override
     public User getUserByUsername(String username) {
         return new User(0, username, "123", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
+    }
+
+    @Override
+    public User addUser(User user) {
+        return user;
     }
 
     @Override

@@ -2,8 +2,6 @@ package lansedeniao.presentation.model;
 
 import lansedeniao.domain.entity.User;
 
-import java.util.Date;
-
 public class UserModel {
 
     private String username;

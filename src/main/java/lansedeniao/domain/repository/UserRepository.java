@@ -8,6 +8,8 @@ public interface UserRepository {
 
     User getUserByUsername(String username);
 
+    User addUser(User user);
+
     boolean hasLoggedInUser();
 
     User getLoggedInUser();

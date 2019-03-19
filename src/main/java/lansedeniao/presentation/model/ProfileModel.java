@@ -15,15 +15,14 @@ public class ProfileModel {
     private String country;
     private int gender;
 
-    public ProfileModel(String username,
-                     String email,
-                     Date dateOfRegistration,
-                     Date birthDay,
-                     int countOfLikes,
-                     int countOfPosts,
-                     String country,
-                     int gender)
-    {
+    private ProfileModel(String username,
+                         String email,
+                         Date dateOfRegistration,
+                         Date birthDay,
+                         int countOfLikes,
+                         int countOfPosts,
+                         String country,
+                         int gender) {
         this.username = username;
         this.email = email;
         this.dateOfRegistration = dateOfRegistration;
