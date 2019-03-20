@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserByUsername(String username) {
-        return new User(0, username, "123", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
+        return new User(0, "123", "123", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
     }
 
     @Override

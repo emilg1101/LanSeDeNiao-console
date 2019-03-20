@@ -22,16 +22,15 @@ public class SignUpCommand implements Command {
             signUpUseCase.signup(name, email, username, password);
             new HelpPrinter().print();
         } catch (UsernameExistsException e) {
-            //TODO: process exception message
             System.out.println("Username " + username + " already exists. Try another one!");
         } catch (EmailValidationException e) {
-            //TODO: process exception message
+            System.out.println("your email have invalid format");
         } catch (PasswordValidationException e) {
-            //TODO: process exception message
+            System.out.println("Please, write password more 6 letters");
         } catch (UsernameValidationException e) {
-            //TODO: process exception message
+            System.out.println("Please, write username more 3 letters");
         } catch (NameValidationException e) {
-            //TODO: process exception message
+            System.out.println("Please, write name more 3 letters");
         }
     }
 }

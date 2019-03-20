@@ -7,6 +7,7 @@ import java.util.Date;
 public class ProfileModel {
 
     private String username;
+    private String name;
     private String email;
     private Date dateOfRegistration;
     private Date birthDay;
@@ -15,7 +16,8 @@ public class ProfileModel {
     private String country;
     private int gender;
 
-    private ProfileModel(String username,
+    public ProfileModel(String username,
+                         String name,
                          String email,
                          Date dateOfRegistration,
                          Date birthDay,
@@ -24,6 +26,7 @@ public class ProfileModel {
                          String country,
                          int gender) {
         this.username = username;
+        this.name = name;
         this.email = email;
         this.dateOfRegistration = dateOfRegistration;
         this.birthDay = birthDay;
@@ -36,6 +39,8 @@ public class ProfileModel {
     public String getUsername() {
         return username;
     }
+
+        public String getName() { return name;}
 
     public String getEmail() {
         return email;
@@ -68,6 +73,7 @@ public class ProfileModel {
     public static ProfileModel mapper(User from) {
         return new ProfileModel(
                 from.getUsername(),
+                from.getName(),
                 from.getEmail(),
                 from.getRegistrationDate(),
                 from.getBirthDate(),

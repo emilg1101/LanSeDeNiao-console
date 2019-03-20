@@ -2,10 +2,7 @@ package lansedeniao.presentation;
 
 import emilg1101.application.Application;
 import emilg1101.application.ConsoleApplication;
-import lansedeniao.presentation.command.HelpCommand;
-import lansedeniao.presentation.command.LoginCommand;
-import lansedeniao.presentation.command.LogoutCommand;
-import lansedeniao.presentation.command.SignUpCommand;
+import lansedeniao.presentation.command.*;
 import lansedeniao.presentation.printer.StartPrinter;
 import lansedeniao.util.DbUtil;
 
@@ -21,10 +18,17 @@ public class Main extends ConsoleApplication {
     @Override
     public void init(Application application) {
         super.init(application);
-        addCommand("?", new HelpCommand());
+        addCommand("/help", new HelpCommand());
         addCommand("/login <username> <password>", new LoginCommand());
         addCommand("/logout", new LogoutCommand());
         addCommand("/signup <name> <email> <username> <password>", new SignUpCommand());
+        addCommand("/addpost <postname> <text>", new AddPostCommand());
+        addCommand("/myprofile", new MyProfileCommand());
+        addCommand("/profile <username>", new ProfileCommand());
+        addCommand("/posts", new OpenPostCommand());
+        addCommand("/next", new NextPostCommand());
+        addCommand("/previous", new PreviousPostCommand());
+        addCommand("/comments", new CommentsCommand());
     }
 
     @Override
