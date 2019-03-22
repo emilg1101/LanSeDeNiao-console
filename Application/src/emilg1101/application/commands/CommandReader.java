@@ -1,7 +1,5 @@
 package emilg1101.application.commands;
 
-import emilg1101.application.logging.Log;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,6 +8,7 @@ public class CommandReader {
 
     private Scanner scanner;
     private Map<String, CommandData> commandSet;
+    private CommandListener commandListener;
 
     public CommandReader() {
         scanner = new Scanner(System.in);
@@ -18,12 +17,19 @@ public class CommandReader {
 
     public void addCommand(String template, Command commandListener) {
         String command = extractCommand(template);
-        Log.i("AddCmd", command);
         CommandData commandData = new CommandData(template, commandListener);
         commandSet.put(command, commandData);
     }
 
-    public void listen() {
+    public void removeCommand(String command) {
+        commandSet.remove(command);
+    }
+
+    public void setCommandListener(CommandListener commandListener) {
+        this.commandListener = commandListener;
+    }
+
+    public void listen() throws CommandNotFoundException, CommandInvalidArgumentsException {
         String line;
         while (true) {
             line = scanner.nextLine();
@@ -34,11 +40,14 @@ public class CommandReader {
                 Map<String, String> values = getValues(commandData.template, line, keys);
                 if (keys.size() == values.size()) {
                     commandData.command.execute(new Arguments(values));
+                    if (commandListener != null) {
+                        commandListener.onCommand(commandData, new Arguments(values));
+                    }
                 } else {
-                    Log.w("CMD", "Arguments entered incorrectly. Try \"" + commandData.template + "\".");
+                    throw new CommandInvalidArgumentsException(commandData);
                 }
             } else {
-                Log.w("CMD", "Command not found!");
+                throw new CommandNotFoundException();
             }
         }
     }
@@ -47,9 +56,9 @@ public class CommandReader {
         Map<String, String> map = new HashMap<>();
         String regex = template;
         for (String key : keys) {
-            regex = regex.replace("<"+key+">", "(.*?)");
+            regex = regex.replace("<" + key + ">", "(.*?)");
         }
-        regex = "^"+regex+"$";
+        regex = "^" + regex + "$";
         Matcher matcher = Pattern.compile(regex, Pattern.DOTALL).matcher(line);
         if (matcher.find() && matcher.groupCount() == keys.size()) {
             for (int i = 0; i < keys.size(); i++) {
@@ -87,13 +96,21 @@ public class CommandReader {
         return list;
     }
 
-    private class CommandData {
+    public class CommandData {
         String template;
         Command command;
 
         CommandData(String template, Command command) {
             this.template = template;
             this.command = command;
+        }
+
+        public String getTemplate() {
+            return template;
+        }
+
+        public Command getCommand() {
+            return command;
         }
     }
 }

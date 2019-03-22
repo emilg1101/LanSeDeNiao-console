@@ -1,4 +1,4 @@
-package lansedeniao.data.mapper;
+package lansedeniao.data.base;
 
 public interface Mapper<F, T> {
 

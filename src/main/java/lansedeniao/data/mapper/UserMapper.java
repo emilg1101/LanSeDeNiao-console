@@ -1,14 +1,25 @@
 package lansedeniao.data.mapper;
 
+import lansedeniao.data.base.Mapper;
 import lansedeniao.data.entity.UserDto;
 import lansedeniao.domain.entity.User;
 
-import java.time.Instant;
-import java.util.Date;
-
 public class UserMapper implements Mapper<UserDto, User> {
+
     @Override
-    public User map(UserDto userDto) {
-        return new User(0, "username", "password", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
+    public User map(UserDto from) {
+        return new User(
+                from.id,
+                from.username,
+                from.password,
+                from.name,
+                from.email,
+                from.rdate,
+                from.bdate,
+                from.country,
+                from.gender,
+                from.likesAmount,
+                from.postsAmount
+        );
     }
 }

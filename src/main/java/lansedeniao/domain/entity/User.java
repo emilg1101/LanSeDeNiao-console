@@ -73,4 +73,21 @@ public class User {
     public int getPostsCount() {
         return postsCount;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", birthDate=" + birthDate +
+                ", country='" + country + '\'' +
+                ", gender=" + gender +
+                ", likesCount=" + likesCount +
+                ", postsCount=" + postsCount +
+                '}';
+    }
 }

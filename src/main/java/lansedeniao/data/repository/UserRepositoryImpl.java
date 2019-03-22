@@ -1,41 +1,32 @@
 package lansedeniao.data.repository;
 
-import lansedeniao.data.UserDao;
-import lansedeniao.data.db.UserDaoImpl;
+import lansedeniao.data.dao.provider.DaoProvider;
+import lansedeniao.data.dao.UserDao;
+import lansedeniao.data.entity.UserDto;
 import lansedeniao.data.mapper.UserMapper;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.repository.UserRepository;
 
-import java.time.Instant;
-import java.util.Date;
+import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private static UserRepository instance = null;
-
-    private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao = DaoProvider.provideUserDao();
 
     private User loggedInUser;
 
-    private UserRepositoryImpl() {
-
-    }
-
-    public static UserRepository getInstance() {
-        if (instance == null) {
-            instance = new UserRepositoryImpl();
-        }
-        return instance;
-    }
-
     @Override
     public User getUserById(long id) {
-        return new UserMapper().map(userDao.getUserById(id));
+        return null;
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return new User(0, "123", "123", "", "", Date.from(Instant.now()), Date.from(Instant.now()), "", 2, 0, 0);
+        Optional<UserDto> userDto = userDao.getUserByUsername(username);
+        if (userDto.isPresent()) {
+            return new UserMapper().map(userDto.get());
+        }
+        return null;
     }
 
     @Override

@@ -1,12 +1,12 @@
 package lansedeniao.domain.usecase;
 
-import lansedeniao.data.repository.UserRepositoryImpl;
 import lansedeniao.domain.exception.UserNotLoggedInException;
+import lansedeniao.domain.factory.RepositoryFactory;
 import lansedeniao.domain.repository.UserRepository;
 
 public class LogoutUseCase {
 
-    private UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private UserRepository userRepository = RepositoryFactory.getUserRepository();
 
     public void logout() throws UserNotLoggedInException {
         if (!userRepository.hasLoggedInUser()) {

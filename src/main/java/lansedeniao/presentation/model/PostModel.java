@@ -1,5 +1,7 @@
 package lansedeniao.presentation.model;
 
+import lansedeniao.domain.entity.Post;
+
 import java.util.Date;
 
 public class PostModel {
@@ -44,6 +46,8 @@ public class PostModel {
         return countComments;
     }
 
-    //TODO mapper
+    public static PostModel mapper(Post from) {
+        return new PostModel(from.getUsername(), "", from.getText(), from.getCdate(), from.getLikesAmount(), 0);
+    }
 
 }

@@ -1,8 +1,8 @@
 package lansedeniao.domain.usecase;
 
-import lansedeniao.data.repository.UserRepositoryImpl;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.exception.*;
+import lansedeniao.domain.factory.RepositoryFactory;
 import lansedeniao.domain.repository.UserRepository;
 
 import java.time.Instant;
@@ -10,9 +10,11 @@ import java.util.Date;
 
 public class SignUpUseCase {
 
-    private UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private UserRepository userRepository = RepositoryFactory.getUserRepository();
 
-    public void signup(String name, String email, String username, String password) throws UsernameExistsException, NameValidationException, EmailValidationException, UsernameValidationException, PasswordValidationException {
+    public void signup(String name, String email, String username, String password) throws UsernameExistsException,
+            NameValidationException, EmailValidationException, UsernameValidationException,
+            PasswordValidationException {
         if (userRepository.getUserByUsername(username) != null) {
             throw new UsernameExistsException();
         }

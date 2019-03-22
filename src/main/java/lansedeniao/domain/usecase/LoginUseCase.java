@@ -1,15 +1,15 @@
 package lansedeniao.domain.usecase;
 
-import lansedeniao.data.repository.UserRepositoryImpl;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.exception.AuthException;
 import lansedeniao.domain.exception.UserLoggedInException;
 import lansedeniao.domain.exception.UserNotFoundException;
+import lansedeniao.domain.factory.RepositoryFactory;
 import lansedeniao.domain.repository.UserRepository;
 
 public class LoginUseCase {
 
-    private UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private UserRepository userRepository = RepositoryFactory.getUserRepository();
 
     public User login(String username, String password) throws UserNotFoundException, AuthException, UserLoggedInException {
         if (userRepository.hasLoggedInUser()) {
