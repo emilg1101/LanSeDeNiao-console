@@ -2,27 +2,32 @@ package lansedeniao.presentation.command;
 
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
-import lansedeniao.domain.entity.User;
-import lansedeniao.domain.exception.AuthException;
-import lansedeniao.domain.exception.UserLoggedInException;
-import lansedeniao.domain.exception.UserNotFoundException;
-import lansedeniao.domain.usecase.LoginUseCase;
 import lansedeniao.presentation.model.ProfileModel;
+import lansedeniao.presentation.presenter.LoginPresenter;
 import lansedeniao.presentation.printer.ProfilePrinter;
+import lansedeniao.presentation.view.LoginView;
 
-public class LoginCommand implements Command {
+public class LoginCommand implements Command, LoginView {
 
-    private LoginUseCase loginUseCase = new LoginUseCase();
+    private LoginPresenter loginPresenter = new LoginPresenter();
 
     @Override
     public void execute(Arguments arguments) {
-        try {
-            User loggedInUser = loginUseCase.login(arguments.getString("username"), arguments.getString("password"));
-            new ProfilePrinter().print(ProfileModel.mapper(loggedInUser));
-        } catch (UserNotFoundException | AuthException e) {
-            System.out.println("Wrong username or password!");
-        } catch (UserLoggedInException e) {
-            System.out.println("You already logged in!");
-        }
+        loginPresenter.login(arguments.getString("username"), arguments.getString("password"));
+    }
+
+    @Override
+    public void showAuthError() {
+        System.out.println("Wrong username or password!");
+    }
+
+    @Override
+    public void loggedInError() {
+        System.out.println("You already logged in!");
+    }
+
+    @Override
+    public void showProfile(ProfileModel profileModel) {
+        new ProfilePrinter().print(profileModel);
     }
 }

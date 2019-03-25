@@ -26,7 +26,7 @@ public class PostsCommand implements Command {
 
     public PostsCommand(ConsoleApplication consoleApplication) {
         this.consoleApplication = consoleApplication;
-        this.consoleApplication.setCommandListener((commandData, arguments) -> {
+       /* this.consoleApplication.setCommandListener((commandData, arguments) -> {
             if (!commandData.getCommand().equals(nextCommand)
                     && !commandData.getCommand().equals(prevCommand)
                     && !commandData.getCommand().equals(likeCommand)
@@ -39,7 +39,7 @@ public class PostsCommand implements Command {
                 postPosition = 0;
                 posts = null;
             }
-        });
+        });*/
     }
 
     @Override
