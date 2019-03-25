@@ -1,0 +1,2 @@
+INSERT INTO new_schema."user" (id, username, password, email, bdate, country, gender, rdate, name) VALUES (1, 'emilg1101', '123', 'emilyandro99@gmail.com', null, null, 2, '2019-03-20 05:26:58.123423', null);
+INSERT INTO new_schema."user" (id, username, password, email, bdate, country, gender, rdate, name) VALUES (3, 'admin', 'admin', 'admin@admin', null, null, 2, '2019-03-21 15:53:05.725781', null);
