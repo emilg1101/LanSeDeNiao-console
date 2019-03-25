@@ -13,6 +13,7 @@ public class LoginCommand implements Command, LoginView {
 
     @Override
     public void execute(Arguments arguments) {
+        loginPresenter.bind(this);
         loginPresenter.login(arguments.getString("username"), arguments.getString("password"));
     }
 
