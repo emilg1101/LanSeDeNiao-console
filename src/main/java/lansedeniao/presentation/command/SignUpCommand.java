@@ -4,33 +4,53 @@ import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
 import lansedeniao.domain.exception.*;
 import lansedeniao.domain.usecase.SignUpUseCase;
+import lansedeniao.presentation.presenter.SignUpPresenter;
 import lansedeniao.presentation.printer.HelpPrinter;
+import lansedeniao.presentation.view.SignUpView;
 
-public class SignUpCommand implements Command {
+public class SignUpCommand implements Command, SignUpView {
 
-    private SignUpUseCase signUpUseCase = new SignUpUseCase();
+    private SignUpPresenter signUpPresenter = new SignUpPresenter();
 
     @Override
     public void execute(Arguments arguments) {
+        signUpPresenter.bind(this);
+        signUpPresenter.signUp(
+                arguments.getString("name"),
+                arguments.getString("email"),
+                arguments.getString("username"),
+                arguments.getString("password")
+        );
+    }
 
-        String name = arguments.getString("name");
-        String email = arguments.getString("email");
-        String username = arguments.getString("username");
-        String password = arguments.getString("password");
+    @Override
+    public void signUp() {
+        HelpPrinter helpPrinter = new HelpPrinter();
+        helpPrinter.print();
+    }
 
-        try {
-            signUpUseCase.signup(name, email, username, password);
-            new HelpPrinter().print();
-        } catch (UsernameExistsException e) {
-            System.out.println("Username " + username + " already exists. Try another one!");
-        } catch (EmailValidationException e) {
-            System.out.println("your email have invalid format");
-        } catch (PasswordValidationException e) {
-            System.out.println("Please, write password more 6 letters");
-        } catch (UsernameValidationException e) {
-            System.out.println("Please, write username more 3 letters");
-        } catch (NameValidationException e) {
-            System.out.println("Please, write name more 3 letters");
-        }
+    @Override
+    public void usernameExistError() {
+        System.out.println("This username already exists!");
+    }
+
+    @Override
+    public void emailValidationError() {
+        System.out.println("Your email doesn't correct");
+    }
+
+    @Override
+    public void passwordValidationError() {
+        System.out.println("You need at least 3 letters in password");
+    }
+
+    @Override
+    public void usernameValidationError() {
+        System.out.println("You need at least 3 letters in username");
+    }
+
+    @Override
+    public void nameValidationError() {
+        System.out.println("You need at least 3 letters in name");
     }
 }
