@@ -3,10 +3,12 @@ package lansedeniao.presentation.command;
 import emilg1101.application.ConsoleApplication;
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
+import emilg1101.application.commands.CommandReader;
+import emilg1101.application.commands.CommandReceiver;
 import lansedeniao.presentation.presenter.TestPresenter;
 import lansedeniao.presentation.view.TestView;
 
-public class TestCommand implements Command, TestView {
+public class TestCommand implements Command, TestView, CommandReceiver {
 
     private ConsoleApplication consoleApplication;
 
@@ -17,12 +19,8 @@ public class TestCommand implements Command, TestView {
 
     public TestCommand(ConsoleApplication consoleApplication) {
         this.consoleApplication = consoleApplication;
-        this.consoleApplication.setCommandListener((commandData, arguments) -> {
-            if (!commandData.getCommand().equals(test2) && !commandData.getCommand().equals(test3) && !commandData.getCommand().equals(this)) {
-                consoleApplication.removeCommand("/test2");
-                consoleApplication.removeCommand("/test3");
-            }
-        });
+        this.consoleApplication.registerReceiver(this);
+
         testPresenter.bind(this);
     }
 
@@ -44,5 +42,15 @@ public class TestCommand implements Command, TestView {
     @Override
     public void test3(int count) {
         System.out.println(String.valueOf(count));
+    }
+
+    @Override
+    public void onCommandReceive(CommandReader.CommandData commandData) {
+        if (!commandData.getCommand().equals(test2) && !commandData.getCommand().equals(test3) && !commandData.getCommand().equals(this)) {
+            consoleApplication.removeCommand("/test2");
+            consoleApplication.removeCommand("/test3");
+            testPresenter.onDestroy();
+            consoleApplication.unregisterReceiver(this);
+        }
     }
 }

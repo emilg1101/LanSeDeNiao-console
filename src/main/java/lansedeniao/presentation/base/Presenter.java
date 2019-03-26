@@ -6,9 +6,18 @@ public abstract class Presenter<T extends View> {
 
     public void bind(T view) {
         mView = view;
+        onFirstAttach();
     }
 
-    public T getView() {
+    protected T getView() {
         return mView;
+    }
+
+    public void onFirstAttach() {
+
+    }
+
+    public void onDestroy() {
+
     }
 }

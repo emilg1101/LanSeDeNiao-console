@@ -15,4 +15,9 @@ public class TestPresenter extends Presenter<TestView> {
         getView().test3(count);
         count++;
     }
+
+    @Override
+    public void onDestroy() {
+        count = 0;
+    }
 }

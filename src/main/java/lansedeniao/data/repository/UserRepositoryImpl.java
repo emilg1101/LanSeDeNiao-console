@@ -17,6 +17,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserById(long id) {
+        Optional<UserDto> userDto = userDao.getUserById(id);
+        if (userDto.isPresent()) {
+            return new UserMapper().map(userDto.get());
+        }
         return null;
     }
 
