@@ -9,13 +9,12 @@ public class LogoutPresenter extends Presenter<LogoutView> {
 
     private LogoutUseCase logoutUseCase = new LogoutUseCase();
 
-    public void logout()
-    {
+    public void logout() {
         try {
             logoutUseCase.logout();
-            getView().Logout();
+            getView().logoutSuccess();
         } catch (UserNotLoggedInException e) {
-            getView().LogoutError();
+            getView().logoutError();
         }
     }
 }
