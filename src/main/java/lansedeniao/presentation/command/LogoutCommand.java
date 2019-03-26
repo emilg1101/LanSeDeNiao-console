@@ -2,20 +2,26 @@ package lansedeniao.presentation.command;
 
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
-import lansedeniao.domain.exception.UserNotLoggedInException;
-import lansedeniao.domain.usecase.LogoutUseCase;
+import lansedeniao.presentation.presenter.LogoutPresenter;
+import lansedeniao.presentation.view.LogoutView;
 
-public class LogoutCommand implements Command {
+public class LogoutCommand implements Command, LogoutView {
 
-    private LogoutUseCase logoutUseCase = new LogoutUseCase();
+    private LogoutPresenter logoutPresenter = new LogoutPresenter();
 
     @Override
     public void execute(Arguments arguments) {
-        try {
-            logoutUseCase.logout();
-            System.out.println("Logout successful!");
-        } catch (UserNotLoggedInException e) {
-            System.out.println("You are not logged in!");
-        }
+        logoutPresenter.bind(this);
+        logoutPresenter.logout();
+    }
+
+    @Override
+    public void Logout() {
+        System.out.println("You are logged out!");
+    }
+
+    @Override
+    public void LogoutError() {
+        System.out.println("You are not logged in!");
     }
 }
