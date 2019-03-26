@@ -16,12 +16,12 @@ public class LogoutCommand implements Command, LogoutView {
     }
 
     @Override
-    public void Logout() {
+    public void logoutSuccess() {
         System.out.println("You are logged out!");
     }
 
     @Override
-    public void LogoutError() {
+    public void logoutError() {
         System.out.println("You are not logged in!");
     }
 }

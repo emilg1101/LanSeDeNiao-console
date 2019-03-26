@@ -8,6 +8,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ConsoleApplication implements Application {
 
@@ -20,6 +22,7 @@ public class ConsoleApplication implements Application {
     private ConsoleApplication consoleApplication;
 
     private CommandListener commandListener;
+    private List<CommandReceiver> receivers = new LinkedList<>();
 
     public ConsoleApplication() {
         this.commandReader = new CommandReader();
@@ -29,6 +32,7 @@ public class ConsoleApplication implements Application {
             if (commandListener != null) {
                 commandListener.onCommand(commandData, arguments);
             }
+            notifyReceivers(commandData);
         });
         try {
             this.commandReader.listen();
@@ -86,6 +90,20 @@ public class ConsoleApplication implements Application {
 
     public void removeCommand(String command) {
         this.commandReader.removeCommand(command);
+    }
+
+    public void registerReceiver(CommandReceiver receiver) {
+        receivers.add(receiver);
+    }
+
+    public void unregisterReceiver(CommandReceiver receiver) {
+        receivers.remove(receiver);
+    }
+
+    private void notifyReceivers(CommandReader.CommandData commandData) {
+        for (CommandReceiver receiver : receivers) {
+            receiver.onCommandReceive(commandData);
+        }
     }
 
     @Override

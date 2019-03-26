@@ -4,6 +4,7 @@ import lansedeniao.presentation.base.View;
 
 public interface LogoutView extends View {
 
-    void Logout();
-    void LogoutError();
+    void logoutSuccess();
+
+    void logoutError();
 }
