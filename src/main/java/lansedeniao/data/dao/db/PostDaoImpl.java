@@ -49,15 +49,43 @@ public class PostDaoImpl implements PostDao {
     }
 
     @Override
-    public boolean addPost(long userId, String text) {
+    public Optional<PostDto> getPost(long id) {
+        try {
+            String selectSQL = "SELECT * FROM new_schema.post WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return new PostRowMapper().rowMap(resultSet);
+        } catch (SQLException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<PostDto> addPost(long userId, String text) {
         try {
             String insertSQL = "INSERT INTO new_schema.post (user_id, text) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
             preparedStatement.setLong(1, userId);
             preparedStatement.setString(2, text);
-            return preparedStatement.executeUpdate() == 1;
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return getPost(generatedKeys.getLong(1));
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
-            return false;
+            return Optional.empty();
         }
     }
 }

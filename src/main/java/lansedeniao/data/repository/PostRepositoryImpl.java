@@ -34,8 +34,13 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public boolean addPost(long userId, String text) {
-        return postDao.addPost(userId, text);
+    public Post addPost(long userId, String text) {
+        Optional<UserDto> userDto = userDao.getUserById(userId);
+        Optional<PostDto> postDto = postDao.addPost(userId, text);
+        if (userDto.isPresent() && postDto.isPresent()) {
+            return new PostMapper().map(postDto.get(), userDto.get());
+        }
+        return null;
     }
 
     @Override

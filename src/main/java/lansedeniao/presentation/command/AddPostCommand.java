@@ -2,6 +2,7 @@ package lansedeniao.presentation.command;
 
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
+import lansedeniao.domain.exception.AddPostException;
 import lansedeniao.domain.exception.UserNotLoggedInException;
 import lansedeniao.domain.usecase.AddPostUseCase;
 
@@ -22,6 +23,8 @@ public class AddPostCommand implements Command {
         try {
             addPostUseCase.addPost(arguments.getString("text"));
         } catch (UserNotLoggedInException e) {
+
+        } catch (AddPostException e) {
 
         }
     }

@@ -1,5 +1,7 @@
 package lansedeniao.domain.usecase;
 
+import lansedeniao.domain.entity.Post;
+import lansedeniao.domain.exception.AddPostException;
 import lansedeniao.domain.exception.UserNotLoggedInException;
 import lansedeniao.domain.factory.RepositoryFactory;
 import lansedeniao.domain.repository.PostRepository;
@@ -10,10 +12,14 @@ public class AddPostUseCase {
     private UserRepository userRepository = RepositoryFactory.getUserRepository();
     private PostRepository postRepository = RepositoryFactory.getPostRepository();
 
-    public void addPost(String text) throws UserNotLoggedInException {
+    public Post addPost(String text) throws UserNotLoggedInException, AddPostException {
         if (!userRepository.hasLoggedInUser()) {
             throw new UserNotLoggedInException();
         }
-        postRepository.addPost(userRepository.getLoggedInUser().getId(), text);
+        Post addedPost = postRepository.addPost(userRepository.getLoggedInUser().getId(), text);
+        if (addedPost == null) {
+            throw new AddPostException();
+        }
+        return addedPost;
     }
 }
