@@ -2,7 +2,7 @@ package lansedeniao.presentation.printer;
 
 public class HelpPrinter {
 
-    public void print() {
+    public static void print() {
         System.out.println("----------------------------");
         System.out.println("Commands");
         System.out.println("         ");

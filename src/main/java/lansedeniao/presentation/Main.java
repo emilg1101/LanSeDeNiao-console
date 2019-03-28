@@ -20,6 +20,7 @@ public class Main extends ConsoleApplication {
         addCommand("/login <username> <password>", new LoginCommand());
         addCommand("/logout", new LogoutCommand());
         addCommand("/signup <name> <email> <username> <password>", new SignUpCommand());
+
         addCommand("/addpost <text>", new AddPostCommand());
         addCommand("/myprofile", new MyProfileCommand());
         addCommand("/profile <username>", new ProfileCommand());
