@@ -10,4 +10,6 @@ public interface PostDao {
     Optional<PostDto> getPostById(long id);
 
     Optional<List<PostDto>> getPostsByUserId(long userId);
+
+    boolean addPost(long userId, String text);
 }

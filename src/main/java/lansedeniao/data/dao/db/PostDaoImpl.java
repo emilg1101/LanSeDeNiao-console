@@ -1,6 +1,5 @@
 package lansedeniao.data.dao.db;
 
-import javafx.geometry.Pos;
 import lansedeniao.data.dao.PostDao;
 import lansedeniao.data.entity.PostDto;
 import lansedeniao.data.mapper.PostRowMapper;
@@ -46,6 +45,19 @@ public class PostDaoImpl implements PostDao {
             return Optional.of(postDtoList);
         } catch (SQLException e) {
             return Optional.empty();
+        }
+    }
+
+    @Override
+    public boolean addPost(long userId, String text) {
+        try {
+            String insertSQL = "INSERT INTO new_schema.post (user_id, text) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setLong(1, userId);
+            preparedStatement.setString(2, text);
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
         }
     }
 }
