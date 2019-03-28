@@ -34,6 +34,11 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
+    public boolean addPost(long userId, String text) {
+        return postDao.addPost(userId, text);
+    }
+
+    @Override
     public boolean setLike(long userId, long postId) {
         return likeDao.setLike(postId, userId).isPresent();
     }

@@ -19,16 +19,10 @@ public class Main extends ConsoleApplication {
         addCommand("/help", new HelpCommand());
         addCommand("/login <username> <password>", new LoginCommand());
         addCommand("/logout", new LogoutCommand());
-
         addCommand("/signup <name> <email> <username> <password>", new SignUpCommand());
-
-        addCommand("/addpost <postname> <text>", new AddPostCommand());
+        addCommand("/addpost <text>", new AddPostCommand());
         addCommand("/myprofile", new MyProfileCommand());
         addCommand("/profile <username>", new ProfileCommand());
-       // addCommand("/posts", new OpenPostCommand());
-        //addCommand("/next", new NextPostCommand());
-        addCommand("/previous", new PreviousPostCommand());
-        addCommand("/comments", new CommentsCommand());
         addCommand("/test", new TestCommand(this));
         addCommand("/posts <user_id>", new PostsCommand(this));
     }

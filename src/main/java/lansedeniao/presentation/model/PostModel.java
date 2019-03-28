@@ -49,5 +49,4 @@ public class PostModel {
     public static PostModel mapper(Post from) {
         return new PostModel(from.getUsername(), "", from.getText(), from.getCdate(), from.getLikesAmount(), 0);
     }
-
 }

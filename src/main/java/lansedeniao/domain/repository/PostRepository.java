@@ -8,5 +8,7 @@ public interface PostRepository {
 
     List<Post> getPostsByUserId(long userId);
 
+    boolean addPost(long userId, String text);
+
     boolean setLike(long userId, long postId);
 }
