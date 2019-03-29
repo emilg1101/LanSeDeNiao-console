@@ -35,7 +35,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User addUser(User user) {
-        return user;
+        UserDto userDto = new UserDto();
+        userDto.username = user.getUsername();
+        userDto.email = user.getEmail();
+        userDto.password = user.getPassword();
+        userDto.name = user.getName();
+        Optional<UserDto> userDtoOptional = userDao.addUser(userDto);
+        if (userDtoOptional.isPresent()) {
+            return new UserMapper().map(userDtoOptional.get());
+        }
+        return null;
     }
 
     @Override

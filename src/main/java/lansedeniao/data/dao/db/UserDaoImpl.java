@@ -5,9 +5,7 @@ import lansedeniao.data.entity.UserDto;
 import lansedeniao.data.mapper.UserRowMapper;
 import lansedeniao.util.DbUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Optional;
 
 public class UserDaoImpl implements UserDao {
@@ -39,6 +37,34 @@ public class UserDaoImpl implements UserDao {
             PreparedStatement preparedStatement = connection.prepareStatement(insertTableSQL);
             preparedStatement.setString(1, username);
             return new UserRowMapper().rowMap(preparedStatement.executeQuery());
+        } catch (SQLException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<UserDto> addUser(UserDto userDto) {
+        try {
+            String insertSQL = "INSERT INTO new_schema.user (username, password, email, name) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, userDto.username);
+            preparedStatement.setString(2, userDto.password);
+            preparedStatement.setString(3, userDto.email);
+            preparedStatement.setString(4, userDto.name);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return getUserById(generatedKeys.getLong(1));
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
             return Optional.empty();
         }

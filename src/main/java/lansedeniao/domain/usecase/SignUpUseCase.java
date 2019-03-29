@@ -33,6 +33,6 @@ public class SignUpUseCase {
 
         User user = new User(0, username, password, name, email, Date.from(Instant.now()), null, "", 2, 0, 0);
         user = userRepository.addUser(user);
-        userRepository.addUser(user);
+        userRepository.setLoggedInUser(user);
     }
 }

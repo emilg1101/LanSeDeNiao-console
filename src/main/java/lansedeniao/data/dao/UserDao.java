@@ -9,4 +9,6 @@ public interface UserDao {
     Optional<UserDto> getUserById(long id);
 
     Optional<UserDto> getUserByUsername(String username);
+
+    Optional<UserDto> addUser(UserDto userDto);
 }
