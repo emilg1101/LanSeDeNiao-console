@@ -4,8 +4,7 @@ import lansedeniao.presentation.model.PostModel;
 
 public class PostPrinter {
 
-    public void print(PostModel postModel)
-    {
+    public void print(PostModel postModel) {
         System.out.println("==============================");
         System.out.println(postModel.getUsername());
         System.out.println(" ");

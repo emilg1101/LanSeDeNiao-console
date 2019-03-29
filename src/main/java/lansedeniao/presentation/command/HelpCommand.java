@@ -1,11 +1,13 @@
 package lansedeniao.presentation.command;
 
+import emilg1101.application.commands.annotation.AddCommand;
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
 import lansedeniao.presentation.presenter.HelpPresenter;
 import lansedeniao.presentation.printer.HelpPrinter;
 import lansedeniao.presentation.view.HelpView;
 
+@AddCommand(template = "/help")
 public class HelpCommand implements Command, HelpView {
 
     private HelpPresenter helpPresenter = new HelpPresenter();

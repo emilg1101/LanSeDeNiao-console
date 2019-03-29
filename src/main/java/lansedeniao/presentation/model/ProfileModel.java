@@ -16,7 +16,7 @@ public class ProfileModel {
     private String country;
     private int gender;
 
-    public ProfileModel(String username,
+    private ProfileModel(String username,
                          String name,
                          String email,
                          Date dateOfRegistration,
@@ -40,7 +40,9 @@ public class ProfileModel {
         return username;
     }
 
-        public String getName() { return name;}
+    public String getName() {
+        return name;
+    }
 
     public String getEmail() {
         return email;

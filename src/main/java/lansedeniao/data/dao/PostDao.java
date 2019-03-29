@@ -11,7 +11,5 @@ public interface PostDao {
 
     Optional<List<PostDto>> getPostsByUserId(long userId);
 
-    Optional<PostDto> getPost(long id);
-
     Optional<PostDto> addPost(long userId, String text);
 }

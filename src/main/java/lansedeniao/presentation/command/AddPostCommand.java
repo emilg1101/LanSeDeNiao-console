@@ -2,20 +2,16 @@ package lansedeniao.presentation.command;
 
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
-import lansedeniao.domain.exception.AddPostException;
-import lansedeniao.domain.exception.UserNotLoggedInException;
-import lansedeniao.domain.usecase.AddPostUseCase;
-import lansedeniao.presentation.base.Presenter;
+import emilg1101.application.commands.annotation.AddCommand;
 import lansedeniao.presentation.model.PostModel;
 import lansedeniao.presentation.presenter.AddPostPresenter;
-import lansedeniao.presentation.presenter.PostsPresenter;
 import lansedeniao.presentation.printer.PostPrinter;
 import lansedeniao.presentation.view.AddPostView;
-import lansedeniao.presentation.view.PostsView;
 
+@AddCommand(template = "/addPost <text>")
 public class AddPostCommand implements Command, AddPostView {
 
-    AddPostPresenter addPostPresenter = new AddPostPresenter();
+    private AddPostPresenter addPostPresenter = new AddPostPresenter();
 
     @Override
     public void execute(Arguments arguments) {
@@ -36,7 +32,6 @@ public class AddPostCommand implements Command, AddPostView {
     @Override
     public void loggedInError() {
         System.out.println("You are not logged in");
-
     }
 
     @Override

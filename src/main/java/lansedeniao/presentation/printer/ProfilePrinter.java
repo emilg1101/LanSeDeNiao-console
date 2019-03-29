@@ -11,7 +11,7 @@ public class ProfilePrinter {
         System.out.println("Your email             " + profileModel.getEmail());
         System.out.println("Date of registration   " + profileModel.getDateOfRegistration());
         if (profileModel.getBirthDay() == null)
-            System.out.println("Date of registration   undefined/");
+            System.out.println("Birthday               undefined");
         else
             System.out.println("Birthday               " + profileModel.getBirthDay());
         System.out.println("Likes                  " + profileModel.getCountOfLikes());

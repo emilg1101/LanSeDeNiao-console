@@ -3,7 +3,6 @@ package lansedeniao.presentation.model;
 import lansedeniao.domain.entity.Post;
 
 import java.util.Date;
-import java.util.List;
 
 public class PostModel {
 
@@ -13,22 +12,22 @@ public class PostModel {
     private Date cdate;
     private int countLikes;
     private int countComments;
-    private List<CommentModel> commentModelList;
+    private CommentsModel commentsModel;
 
-    public PostModel(String username,
-                     String postName,
-                     String text,
-                     Date cdate,
-                     int countLikes,
-                     int countComments,
-                     List<CommentModel> commentModelList) {
+    private PostModel(String username,
+                      String postName,
+                      String text,
+                      Date cdate,
+                      int countLikes,
+                      int countComments,
+                      CommentsModel commentsModel) {
         this.username = username;
         this.postName = postName;
         this.text = text;
         this.cdate = cdate;
         this.countLikes = countLikes;
         this.countComments = countComments;
-        this.commentModelList = commentModelList;
+        this.commentsModel = commentsModel;
     }
 
     public String getPostName() {
@@ -55,8 +54,8 @@ public class PostModel {
         return countComments;
     }
 
-    public List<CommentModel> getCommentModelList() {
-        return commentModelList;
+    public CommentsModel getCommentsModel() {
+        return commentsModel;
     }
 
     public static PostModel mapper(Post from) {
@@ -65,7 +64,7 @@ public class PostModel {
                 from.getText(),
                 from.getCdate(),
                 from.getLikesAmount(),
-                0,
-                null);
+                from.getComments().size(),
+                CommentsModel.mapper(from.getComments()));
     }
 }

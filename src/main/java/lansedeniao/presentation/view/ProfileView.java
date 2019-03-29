@@ -8,4 +8,6 @@ public interface ProfileView extends View {
     void showProfile(ProfileModel profileModel);
 
     void userNotFoundException();
+
+    void userNotLoggedInException();
 }

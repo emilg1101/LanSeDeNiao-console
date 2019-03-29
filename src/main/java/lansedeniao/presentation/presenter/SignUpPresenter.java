@@ -1,6 +1,5 @@
 package lansedeniao.presentation.presenter;
 
-import lansedeniao.domain.entity.User;
 import lansedeniao.domain.exception.*;
 import lansedeniao.domain.usecase.SignUpUseCase;
 import lansedeniao.presentation.base.Presenter;
@@ -10,10 +9,8 @@ public class SignUpPresenter extends Presenter<SignUpView> {
 
     private SignUpUseCase signUpUseCase = new SignUpUseCase();
 
-    public void signUp(String name, String email, String username, String password)
-    {
-        try
-        {
+    public void signUp(String name, String email, String username, String password) {
+        try {
             signUpUseCase.signup(name, email, username, password);
             getView().signUp();
         } catch (NameValidationException e) {
@@ -28,5 +25,4 @@ public class SignUpPresenter extends Presenter<SignUpView> {
             getView().usernameValidationError();
         }
     }
-
 }

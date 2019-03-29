@@ -2,12 +2,12 @@ package lansedeniao.presentation.command;
 
 import emilg1101.application.commands.Arguments;
 import emilg1101.application.commands.Command;
-import lansedeniao.domain.exception.*;
-import lansedeniao.domain.usecase.SignUpUseCase;
+import emilg1101.application.commands.annotation.AddCommand;
 import lansedeniao.presentation.presenter.SignUpPresenter;
 import lansedeniao.presentation.printer.HelpPrinter;
 import lansedeniao.presentation.view.SignUpView;
 
+@AddCommand(template = "/signup <name> <email> <username> <password>")
 public class SignUpCommand implements Command, SignUpView {
 
     private SignUpPresenter signUpPresenter = new SignUpPresenter();
@@ -25,8 +25,7 @@ public class SignUpCommand implements Command, SignUpView {
 
     @Override
     public void signUp() {
-        HelpPrinter helpPrinter = new HelpPrinter();
-        helpPrinter.print();
+        HelpPrinter.print();
     }
 
     @Override

@@ -5,10 +5,7 @@ import lansedeniao.data.entity.PostDto;
 import lansedeniao.data.mapper.PostRowMapper;
 import lansedeniao.util.DbUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,24 +46,10 @@ public class PostDaoImpl implements PostDao {
     }
 
     @Override
-    public Optional<PostDto> getPost(long id) {
-        try {
-            String selectSQL = "SELECT * FROM new_schema.post WHERE id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
-            preparedStatement.setLong(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            return new PostRowMapper().rowMap(resultSet);
-        } catch (SQLException e) {
-            return Optional.empty();
-        }
-    }
-
-    @Override
     public Optional<PostDto> addPost(long userId, String text) {
         try {
             String insertSQL = "INSERT INTO new_schema.post (user_id, text) VALUES (?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setLong(1, userId);
             preparedStatement.setString(2, text);
 
@@ -78,9 +61,8 @@ public class PostDaoImpl implements PostDao {
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    return getPost(generatedKeys.getLong(1));
-                }
-                else {
+                    return getPostById(generatedKeys.getLong(1));
+                } else {
                     throw new SQLException("Creating user failed, no ID obtained.");
                 }
             }

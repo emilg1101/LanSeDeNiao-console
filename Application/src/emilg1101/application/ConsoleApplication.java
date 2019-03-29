@@ -1,10 +1,11 @@
 package emilg1101.application;
 
 import emilg1101.application.commands.*;
-import emilg1101.application.logging.Log;
+import emilg1101.application.commands.annotation.AddCommand;
 import emilg1101.application.property.PropertyLoader;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -48,6 +49,7 @@ public class ConsoleApplication implements Application {
     private void initCommands() {
 
         Class<? extends ConsoleApplication> obj = consoleApplication.getClass();
+        //System.out.println(obj.getPackage());
         Method[] methods = obj.getDeclaredMethods();
 
         Arrays.stream(methods)
@@ -61,11 +63,42 @@ public class ConsoleApplication implements Application {
                             try {
                                 method.invoke(consoleApplication, arguments);
                             } catch (IllegalAccessException | InvocationTargetException e) {
-                                //Log.e("initCommands", e.toString());
+                                e.printStackTrace();
                             }
                         });
                     }
                 });
+
+        List<Class<?>> classes = ClassFinder.find(obj.getPackage().getName());
+        for (Class<?> c : classes) {
+            Annotation annotation = c.getAnnotation(AddCommand.class);
+            AddCommand addCommand = (AddCommand) annotation;
+            if (addCommand != null) {
+                try {
+                    Constructor<?> ctor = null;
+                    try {
+                        ctor = c.getConstructor(ConsoleApplication.class);
+                    } catch (NoSuchMethodException e) {
+
+                    }
+                    Object command;
+                    if (ctor != null) {
+                        command = ctor.newInstance(this);
+                    } else {
+                        command = c.newInstance();
+                    }
+                    if (command instanceof Command) {
+                        addCommand(addCommand.template(), (Command) command);
+                    }
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override

@@ -1,31 +1,14 @@
 package lansedeniao.presentation;
 
-import emilg1101.application.Application;
 import emilg1101.application.ConsoleApplication;
 import emilg1101.application.commands.CommandInvalidArgumentsException;
 import emilg1101.application.commands.CommandNotFoundException;
-import lansedeniao.presentation.command.*;
 import lansedeniao.presentation.printer.StartPrinter;
 
 public class Main extends ConsoleApplication {
 
     public static void main(String[] args) {
         new Main();
-    }
-
-    @Override
-    public void init(Application application) {
-        super.init(application);
-        addCommand("/help", new HelpCommand());
-        addCommand("/login <username> <password>", new LoginCommand());
-        addCommand("/logout", new LogoutCommand());
-        addCommand("/signup <name> <email> <username> <password>", new SignUpCommand());
-
-        addCommand("/addpost <text>", new AddPostCommand());
-        addCommand("/myprofile", new MyProfileCommand());
-        addCommand("/profile <username>", new ProfileCommand());
-        addCommand("/test", new TestCommand(this));
-        addCommand("/posts <user_id>", new PostsCommand(this));
     }
 
     @Override

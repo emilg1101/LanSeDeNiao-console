@@ -2,7 +2,6 @@ package lansedeniao.presentation.printer;
 
 import lansedeniao.presentation.model.CommentModel;
 import lansedeniao.presentation.model.CommentsModel;
-import lansedeniao.presentation.model.PostModel;
 
 public class CommentsPrinter {
 

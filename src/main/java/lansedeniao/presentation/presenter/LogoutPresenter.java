@@ -9,7 +9,8 @@ public class LogoutPresenter extends Presenter<LogoutView> {
 
     private LogoutUseCase logoutUseCase = new LogoutUseCase();
 
-    public void logout() {
+    @Override
+    public void onFirstAttach() {
         try {
             logoutUseCase.logout();
             getView().logoutSuccess();

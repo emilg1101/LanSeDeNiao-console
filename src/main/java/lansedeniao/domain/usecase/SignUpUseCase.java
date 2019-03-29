@@ -21,7 +21,7 @@ public class SignUpUseCase {
         if (name.isEmpty() || name.length() <= 3) {
             throw new NameValidationException();
         }
-        if (email.isEmpty() || email.length() <=3) {
+        if (email.isEmpty() || email.length() <= 3) {
             throw new EmailValidationException();
         }
         if (username.isEmpty() || username.length() <= 3) {

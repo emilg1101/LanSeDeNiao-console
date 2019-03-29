@@ -8,5 +8,7 @@ public interface LikeDao {
 
     Optional<LikeDto> setLike(long postId, long userId);
 
+    boolean removeLike(long postId, long userId);
+
     boolean isLiked(long postId, long userId);
 }
