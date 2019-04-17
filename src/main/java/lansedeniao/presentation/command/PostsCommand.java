@@ -98,7 +98,6 @@ public class PostsCommand implements Command, PostsView, CommandReceiver {
             consoleApplication.removeCommand("/comments");
             consoleApplication.removeCommand("/back");
             consoleApplication.removeCommand("/addComment");
-            consoleApplication.unregisterReceiver(this);
             postsPresenter.onDestroy();
         }
     }
