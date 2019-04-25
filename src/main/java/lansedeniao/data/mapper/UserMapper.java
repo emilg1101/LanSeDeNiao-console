@@ -1,7 +1,7 @@
 package lansedeniao.data.mapper;
 
 import lansedeniao.data.base.Mapper;
-import lansedeniao.data.entity.UserDto;
+import lansedeniao.data.database.dto.UserDto;
 import lansedeniao.domain.entity.User;
 
 public class UserMapper implements Mapper<UserDto, User> {

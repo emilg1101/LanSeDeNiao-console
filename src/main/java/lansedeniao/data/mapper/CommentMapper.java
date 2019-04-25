@@ -1,7 +1,7 @@
 package lansedeniao.data.mapper;
 
 import lansedeniao.data.base.Mapper;
-import lansedeniao.data.entity.CommentDto;
+import lansedeniao.data.database.dto.CommentDto;
 import lansedeniao.domain.entity.Comment;
 
 public class CommentMapper implements Mapper<CommentDto, Comment> {

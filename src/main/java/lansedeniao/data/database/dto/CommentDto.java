@@ -1,4 +1,4 @@
-package lansedeniao.data.entity;
+package lansedeniao.data.database.dto;
 
 public class CommentDto {
     public long id;

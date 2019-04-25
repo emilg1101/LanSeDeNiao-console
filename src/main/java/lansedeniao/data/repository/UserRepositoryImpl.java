@@ -1,8 +1,8 @@
 package lansedeniao.data.repository;
 
-import lansedeniao.data.dao.provider.DaoProvider;
-import lansedeniao.data.dao.UserDao;
-import lansedeniao.data.entity.UserDto;
+import lansedeniao.data.database.provider.DaoProvider;
+import lansedeniao.data.database.dao.UserDao;
+import lansedeniao.data.database.dto.UserDto;
 import lansedeniao.data.mapper.UserMapper;
 import lansedeniao.domain.entity.User;
 import lansedeniao.domain.repository.UserRepository;

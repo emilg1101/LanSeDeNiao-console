@@ -1,13 +1,13 @@
 package lansedeniao.data.repository;
 
-import lansedeniao.data.dao.CommentDao;
-import lansedeniao.data.dao.LikeDao;
-import lansedeniao.data.dao.PostDao;
-import lansedeniao.data.dao.UserDao;
-import lansedeniao.data.dao.provider.DaoProvider;
-import lansedeniao.data.entity.CommentDto;
-import lansedeniao.data.entity.PostDto;
-import lansedeniao.data.entity.UserDto;
+import lansedeniao.data.database.dao.CommentDao;
+import lansedeniao.data.database.dao.LikeDao;
+import lansedeniao.data.database.dao.PostDao;
+import lansedeniao.data.database.dao.UserDao;
+import lansedeniao.data.database.provider.DaoProvider;
+import lansedeniao.data.database.dto.CommentDto;
+import lansedeniao.data.database.dto.PostDto;
+import lansedeniao.data.database.dto.UserDto;
 import lansedeniao.data.mapper.CommentMapper;
 import lansedeniao.data.mapper.PostMapper;
 import lansedeniao.domain.entity.Comment;

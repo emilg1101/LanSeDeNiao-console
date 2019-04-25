@@ -1,8 +1,8 @@
-package lansedeniao.data.dao.db;
+package lansedeniao.data.database.jdbc.dao;
 
-import lansedeniao.data.dao.UserDao;
-import lansedeniao.data.entity.UserDto;
-import lansedeniao.data.mapper.UserRowMapper;
+import lansedeniao.data.database.dao.UserDao;
+import lansedeniao.data.database.dto.UserDto;
+import lansedeniao.data.database.jdbc.mapper.UserRowMapper;
 import lansedeniao.util.DbUtil;
 
 import java.sql.*;

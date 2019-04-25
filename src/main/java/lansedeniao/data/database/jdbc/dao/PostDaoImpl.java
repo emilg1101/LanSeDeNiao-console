@@ -1,8 +1,8 @@
-package lansedeniao.data.dao.db;
+package lansedeniao.data.database.jdbc.dao;
 
-import lansedeniao.data.dao.PostDao;
-import lansedeniao.data.entity.PostDto;
-import lansedeniao.data.mapper.PostRowMapper;
+import lansedeniao.data.database.dao.PostDao;
+import lansedeniao.data.database.dto.PostDto;
+import lansedeniao.data.database.jdbc.mapper.PostRowMapper;
 import lansedeniao.util.DbUtil;
 
 import java.sql.*;

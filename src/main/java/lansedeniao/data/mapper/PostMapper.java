@@ -1,9 +1,9 @@
 package lansedeniao.data.mapper;
 
 import lansedeniao.data.base.Mapper3;
-import lansedeniao.data.entity.CommentDto;
-import lansedeniao.data.entity.PostDto;
-import lansedeniao.data.entity.UserDto;
+import lansedeniao.data.database.dto.CommentDto;
+import lansedeniao.data.database.dto.PostDto;
+import lansedeniao.data.database.dto.UserDto;
 import lansedeniao.domain.entity.Post;
 
 import java.util.List;

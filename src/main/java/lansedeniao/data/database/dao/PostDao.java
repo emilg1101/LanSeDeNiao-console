@@ -1,6 +1,6 @@
-package lansedeniao.data.dao;
+package lansedeniao.data.database.dao;
 
-import lansedeniao.data.entity.PostDto;
+import lansedeniao.data.database.dto.PostDto;
 
 import java.util.List;
 import java.util.Optional;

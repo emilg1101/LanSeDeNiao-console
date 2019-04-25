@@ -1,8 +1,8 @@
-package lansedeniao.data.dao.db;
+package lansedeniao.data.database.jdbc.dao;
 
-import lansedeniao.data.dao.CommentDao;
-import lansedeniao.data.entity.CommentDto;
-import lansedeniao.data.mapper.CommentRowMapper;
+import lansedeniao.data.database.dao.CommentDao;
+import lansedeniao.data.database.dto.CommentDto;
+import lansedeniao.data.database.jdbc.mapper.CommentRowMapper;
 import lansedeniao.util.DbUtil;
 
 import java.sql.*;

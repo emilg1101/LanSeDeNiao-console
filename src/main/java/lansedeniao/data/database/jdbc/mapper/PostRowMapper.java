@@ -1,7 +1,7 @@
-package lansedeniao.data.mapper;
+package lansedeniao.data.database.jdbc.mapper;
 
 import lansedeniao.data.base.RowMapper;
-import lansedeniao.data.entity.PostDto;
+import lansedeniao.data.database.dto.PostDto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

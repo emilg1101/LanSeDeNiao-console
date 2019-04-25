@@ -1,6 +1,6 @@
-package lansedeniao.data.dao;
+package lansedeniao.data.database.dao;
 
-import lansedeniao.data.entity.LikeDto;
+import lansedeniao.data.database.dto.LikeDto;
 
 import java.util.Optional;
 

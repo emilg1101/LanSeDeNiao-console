@@ -1,4 +1,4 @@
-package lansedeniao.data.entity;
+package lansedeniao.data.database.dto;
 
 import java.sql.Date;
 
