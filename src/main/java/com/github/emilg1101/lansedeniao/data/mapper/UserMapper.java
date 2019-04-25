@@ -1,7 +1,7 @@
 package com.github.emilg1101.lansedeniao.data.mapper;
 
 import com.github.emilg1101.lansedeniao.data.base.Mapper;
-import com.github.emilg1101.lansedeniao.data.entity.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.UserDto;
 import com.github.emilg1101.lansedeniao.domain.entity.User;
 
 public class UserMapper implements Mapper<UserDto, User> {

@@ -1,7 +1,8 @@
 package com.github.emilg1101.lansedeniao.data.repository;
 
-import com.github.emilg1101.lansedeniao.data.dao.UserDao;
-import com.github.emilg1101.lansedeniao.data.entity.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.dao.UserDao;
+import com.github.emilg1101.lansedeniao.data.database.dto.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.jpa.JpaQualifier;
 import com.github.emilg1101.lansedeniao.data.mapper.UserMapper;
 import com.github.emilg1101.lansedeniao.domain.entity.User;
 import com.github.emilg1101.lansedeniao.domain.repository.UserRepository;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
+    @JpaQualifier
     private UserDao userDao;
 
     private User loggedInUser;

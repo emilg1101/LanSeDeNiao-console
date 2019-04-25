@@ -1,7 +1,7 @@
 package com.github.emilg1101.lansedeniao.data.mapper;
 
 import com.github.emilg1101.lansedeniao.data.base.RowMapper;
-import com.github.emilg1101.lansedeniao.data.entity.CommentDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.CommentDto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

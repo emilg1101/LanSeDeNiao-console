@@ -1,9 +1,9 @@
 package com.github.emilg1101.lansedeniao.data.mapper;
 
 import com.github.emilg1101.lansedeniao.data.base.Mapper3;
-import com.github.emilg1101.lansedeniao.data.entity.CommentDto;
-import com.github.emilg1101.lansedeniao.data.entity.PostDto;
-import com.github.emilg1101.lansedeniao.data.entity.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.CommentDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.PostDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.UserDto;
 import com.github.emilg1101.lansedeniao.domain.entity.Post;
 
 import java.util.List;

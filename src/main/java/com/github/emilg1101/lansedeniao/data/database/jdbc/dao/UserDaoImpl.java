@@ -1,7 +1,8 @@
-package com.github.emilg1101.lansedeniao.data.dao.db;
+package com.github.emilg1101.lansedeniao.data.database.jdbc.dao;
 
-import com.github.emilg1101.lansedeniao.data.dao.UserDao;
-import com.github.emilg1101.lansedeniao.data.entity.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.dao.UserDao;
+import com.github.emilg1101.lansedeniao.data.database.dto.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.jdbc.JdbcQualifier;
 import com.github.emilg1101.lansedeniao.data.mapper.UserRowMapper;
 import com.github.emilg1101.lansedeniao.util.DbUtil;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,8 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 import java.util.Optional;
 
-@Component
+@Component("JdbcUserDao")
+@JdbcQualifier
 public class UserDaoImpl implements UserDao {
 
     private Connection connection = DbUtil.getConnection();

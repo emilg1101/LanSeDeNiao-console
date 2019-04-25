@@ -1,5 +1,8 @@
 package com.github.emilg1101.lansedeniao.util;
 
+import org.postgresql.ds.PGSimpleDataSource;
+
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -29,6 +32,20 @@ public class DbUtil {
             }
             return connection;
         }
-
     }
+
+    public static DataSource getDataSource() {
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        try (InputStream inputStream = DbUtil.class.getClassLoader().getResourceAsStream("db.properties")) {
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            dataSource.setURL(properties.getProperty("url"));
+            dataSource.setUser(properties.getProperty("user"));
+            dataSource.setPassword(properties.getProperty("password"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return dataSource;
+    }
+
 }

@@ -1,7 +1,8 @@
-package com.github.emilg1101.lansedeniao.data.dao.db;
+package com.github.emilg1101.lansedeniao.data.database.jdbc.dao;
 
-import com.github.emilg1101.lansedeniao.data.dao.PostDao;
-import com.github.emilg1101.lansedeniao.data.entity.PostDto;
+import com.github.emilg1101.lansedeniao.data.database.dao.PostDao;
+import com.github.emilg1101.lansedeniao.data.database.dto.PostDto;
+import com.github.emilg1101.lansedeniao.data.database.jdbc.JdbcQualifier;
 import com.github.emilg1101.lansedeniao.data.mapper.PostRowMapper;
 import com.github.emilg1101.lansedeniao.util.DbUtil;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Component("JdbcPostDao")
+@JdbcQualifier
 public class PostDaoImpl implements PostDao {
 
     private Connection connection = DbUtil.getConnection();

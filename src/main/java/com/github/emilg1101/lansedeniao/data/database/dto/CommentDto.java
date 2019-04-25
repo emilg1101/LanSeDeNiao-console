@@ -1,4 +1,4 @@
-package com.github.emilg1101.lansedeniao.data.entity;
+package com.github.emilg1101.lansedeniao.data.database.dto;
 
 public class CommentDto {
     public long id;

@@ -1,6 +1,6 @@
-package com.github.emilg1101.lansedeniao.data.dao;
+package com.github.emilg1101.lansedeniao.data.database.dao;
 
-import com.github.emilg1101.lansedeniao.data.entity.CommentDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.CommentDto;
 
 import java.util.List;
 import java.util.Optional;

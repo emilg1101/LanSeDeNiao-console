@@ -1,12 +1,13 @@
 package com.github.emilg1101.lansedeniao.data.repository;
 
-import com.github.emilg1101.lansedeniao.data.dao.CommentDao;
-import com.github.emilg1101.lansedeniao.data.dao.LikeDao;
-import com.github.emilg1101.lansedeniao.data.dao.PostDao;
-import com.github.emilg1101.lansedeniao.data.dao.UserDao;
-import com.github.emilg1101.lansedeniao.data.entity.CommentDto;
-import com.github.emilg1101.lansedeniao.data.entity.PostDto;
-import com.github.emilg1101.lansedeniao.data.entity.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.dao.CommentDao;
+import com.github.emilg1101.lansedeniao.data.database.dao.LikeDao;
+import com.github.emilg1101.lansedeniao.data.database.dao.PostDao;
+import com.github.emilg1101.lansedeniao.data.database.dao.UserDao;
+import com.github.emilg1101.lansedeniao.data.database.dto.CommentDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.PostDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.UserDto;
+import com.github.emilg1101.lansedeniao.data.database.jdbc.JdbcQualifier;
 import com.github.emilg1101.lansedeniao.data.mapper.CommentMapper;
 import com.github.emilg1101.lansedeniao.data.mapper.PostMapper;
 import com.github.emilg1101.lansedeniao.domain.entity.Comment;
@@ -23,15 +24,19 @@ import java.util.Optional;
 public class PostRepositoryImpl implements PostRepository {
 
     @Autowired
+    @JdbcQualifier
     private PostDao postDao;
 
     @Autowired
+    @JdbcQualifier
     private UserDao userDao;
 
     @Autowired
+    @JdbcQualifier
     private LikeDao likeDao;
 
     @Autowired
+    @JdbcQualifier
     private CommentDao commentDao;
 
     @Override

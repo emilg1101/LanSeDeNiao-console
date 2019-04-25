@@ -17,7 +17,7 @@ public class AddPostPresenter extends MvpPresenter<AddPostView> {
     private AddPostUseCase addPostUseCase;
 
     public void addPost(String text) {
-        if (text.length() > 30) {
+        if (text.length() > 100) {
             getView().lengthException();
             return;
         }

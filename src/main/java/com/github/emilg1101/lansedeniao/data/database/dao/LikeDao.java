@@ -1,6 +1,6 @@
-package com.github.emilg1101.lansedeniao.data.dao;
+package com.github.emilg1101.lansedeniao.data.database.dao;
 
-import com.github.emilg1101.lansedeniao.data.entity.LikeDto;
+import com.github.emilg1101.lansedeniao.data.database.dto.LikeDto;
 
 import java.util.Optional;
 

@@ -1,7 +1,8 @@
-package com.github.emilg1101.lansedeniao.data.dao.db;
+package com.github.emilg1101.lansedeniao.data.database.jdbc.dao;
 
-import com.github.emilg1101.lansedeniao.data.dao.LikeDao;
-import com.github.emilg1101.lansedeniao.data.entity.LikeDto;
+import com.github.emilg1101.lansedeniao.data.database.dao.LikeDao;
+import com.github.emilg1101.lansedeniao.data.database.dto.LikeDto;
+import com.github.emilg1101.lansedeniao.data.database.jdbc.JdbcQualifier;
 import com.github.emilg1101.lansedeniao.data.mapper.LikeRowMapper;
 import com.github.emilg1101.lansedeniao.util.DbUtil;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Component
+@Component("JdbcLikeDao")
+@JdbcQualifier
 public class LikeDaoImpl implements LikeDao {
 
     private Connection connection = DbUtil.getConnection();
